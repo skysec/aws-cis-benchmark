@@ -53,6 +53,15 @@ control 'aws-1.5 / aws-1.6 / aws-1.7 / aws-1.8 / aws-1.9 / aws-1.10 / aws-1.11' 
     end
 end
 
+control 'aws-1.12' do
+    impact 1.0
+    title 'Ensure not root account access keys'
+    desc "Ensure no root account access key exists (Scored)"
+    describe aws_iam_root_user do
+        it { should_not have_mfa_enabled }
+    end
+end
+
 control 'aws-1.13' do
     impact 1.0
     title 'Ensure MFA is enabled for the root account'
