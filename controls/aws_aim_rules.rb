@@ -70,3 +70,12 @@ control 'aws-1.13' do
         it { should have_mfa_enabled }
     end
 end
+
+control 'aws-1.14' do
+    impact 1.0
+    title 'Ensure hardware MFA is enabled for the root account'
+    desc "Ensure hardware MFA is enabled for the root account (Scored)"
+    describe aws_iam_root_user do
+        it { should have_hardware_mfa_enabled }
+    end
+end
