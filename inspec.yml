@@ -1,0 +1,12 @@
+name: aws-cis-benchmark
+title: AWS CIS Benchmark
+summary: Verifies AWS Resources 
+version: 0.0.1
+
+maintainer: Hecber Cordova
+copyright: Hecber Cordova
+copyright_email: hecber@gmail.com
+license: MPL-2.0
+
+supports:
+  - platform: aws
