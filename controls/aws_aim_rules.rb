@@ -88,3 +88,21 @@ control 'aws-1.16' do
         it { should_not exist }
     end
 end
+
+control 'aws-1.19' do
+    impact 1.0
+    title 'EC2 instance profiles'
+    desc "Ensure IAM instance roles are used for AWS resource access from instances (Not Scored)"
+    describe aws_ec2_instances do
+        it { should have_roles }
+    end
+end
+
+control 'aws-1.20' do
+    impact 1.0
+    title 'Support role'
+    desc "Ensure a support role has been created to manage incidents with AWS Support (Scored)"
+    describe aws_iam_policy('AWSSupportAccess') do
+        it { should be_attached }
+    end
+end
