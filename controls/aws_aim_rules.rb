@@ -79,3 +79,12 @@ control 'aws-1.14' do
         it { should have_hardware_mfa_enabled }
     end
 end
+
+control 'aws-1.16' do
+    impact 1.0
+    title 'IAM policies are attached only to groups or roles'
+    desc "Ensure IAM policies are attached only to groups or roles (Scored)"
+    describe aws_iam_users.where(has_attached_policies: true) do
+        it { should_not exist }
+    end
+end
